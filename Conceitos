@@ -70,6 +70,9 @@ podendo inclusive "projetar" apenas alguns dados da entidade original.
 
 Insere,deleta e atualiza com métodos HTTP ; User e UserDTO
 
+Cria a entidade Post com mesma lógica
+Faz referência para AuthorDTO
+Referenciando os posts do usuário
 
 
 Objetivo de projeto:
