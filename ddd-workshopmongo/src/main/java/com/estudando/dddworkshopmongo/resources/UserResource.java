@@ -1,5 +1,6 @@
 package com.estudando.dddworkshopmongo.resources;
 
+import com.estudando.dddworkshopmongo.domain.Post;
 import com.estudando.dddworkshopmongo.domain.User;
 import com.estudando.dddworkshopmongo.dto.UserDTO;
 import com.estudando.dddworkshopmongo.services.UserService;
@@ -69,6 +70,13 @@ public class UserResource {
         obj.setId(id);
         obj = service.update(obj);
         return ResponseEntity.noContent().build();
+    }
+
+    //Método q busca usuário e retorna lista de posts associada a esse usuário
+    @RequestMapping(value="/{id}/posts", method=RequestMethod.GET)
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+        User obj = service.findById(id);
+        return ResponseEntity.ok().body(obj.getPosts());
     }
 
     //Tipo RequestEntity, classe que representa as requisições HTTP
