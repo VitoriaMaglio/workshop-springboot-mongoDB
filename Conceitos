@@ -73,6 +73,10 @@ podendo inclusive "projetar" apenas alguns dados da entidade original.
 Cria a entidade Post com mesma lógica
 Faz referência para AuthorDTO
 Referenciando os posts do usuário
+Acrescentando comentários aos posts
+
+Consulta simples com query methods
+escrever findbyAtributo... e a consulta no banco é feito automático
 
 
 Objetivo de projeto:
