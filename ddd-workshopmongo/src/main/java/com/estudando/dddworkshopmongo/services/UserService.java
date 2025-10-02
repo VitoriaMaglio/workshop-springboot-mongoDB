@@ -44,4 +44,17 @@ public class UserService {
         findById(id);//buscar e se não encontrar id já entra no tratamento
         repo.deleteById(id);
     }
+
+    public User update(User obj) {
+        //buscar obj original no banco, alterar ele com o que o usuário digitar e depois salvar
+        User newObj = findById(obj.getId());
+        updateData(newObj, obj);
+        return repo.save(newObj);
+    }
+
+    //Método que seta as atualizações
+    private void updateData(User newObj, User obj) {
+        newObj.setName(obj.getName());
+        newObj.setEmail(obj.getEmail());
+    }
 }
