@@ -55,23 +55,18 @@ Um sistema simples feito para estudo do framework **Spring Boot** e integração
 
 # Como rodar o projeto
 
-- 1. Instale o **Java 17+** e o **MongoDB** (local ou use o Mongo Atlas).
-
+- Instale o **Java 17+** e o **MongoDB** (local ou use o Mongo Atlas).
    
-- 2. Clone este repositório:
+- Clone este repositório:
 
-
-- 3.Acesse a pasta do projeto:
+- Acesse a pasta do projeto:
   cd springsocialmongo
 
-  
-- 4.Configure a conexão com o MongoDB no arquivo application.properties, por exemplo:
+- Configure a conexão com o MongoDB no arquivo application.properties, por exemplo:
 spring.data.mongodb.uri=mongodb://localhost:27017/springmongo
 
-
-- 5.Execute a aplicação:
+- Execute a aplicação:
 mvn spring-boot:run
 
-
-- 6.A API estará disponível em:
+- A API estará disponível em:
 http://localhost:8080
