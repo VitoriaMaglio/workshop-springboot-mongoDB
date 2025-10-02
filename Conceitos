@@ -1,0 +1,35 @@
+Iniciando projeto com Spring e MongoDB, um banco de dados não relacional
+Coleções-> em banco não relacional nõa criamos tabelas pois não possuem sequel, são orientados à documentos.
+
+Nivelamento sobre NoSQL e MongoDB
+Probelmas q bancos não relacionais resolveram:
+Incompatibilidade de impedância: em modelos relacionais cada entidade é representada por uma tabela, dados são armazenados em tabelas diferentes
+Para montar relatórios é necessário buscar em várias tabelas, e são armazenadas de uma forma diferente daqueles dados em memória do computador,
+que são armazenados em objetos relacionados na memória RAM.
+Porém no disco, esses dados são armazenados em memórias e linhas, e precisam ficar traduzindo objetos relacionais para objetos armazenados em memória
+ORM = Mapeameto de objt relacionais para facilitar para programadores; problemas de performance
+Transações e junções em bancos relacionais degradam performance.
+Grande volume de dados e acessos: suporte à grande volume de acessos e dados, relacionais não funcionam bem em cluster
+
+Duas classes principais de banco de dados:
+.Banco de dadoxs orientado a agregados->
+chave-valor
+documentos
+família de colunas
+.Banco de dados de grafos
+
+
+Agregado é um conjunto de dados relacionados tratados como uma unidade
+Bloco contíguo, acessa os dados de uma entidade com um só acesso
+Dados não normalizado->
+Já possui a estrutura de objetos associados, todos dados são armazenados juntos, uma unidade natural de replicação e estão no mesmo node do cluster
+ACID:conjunto de propriedades que garantem que as transações sejam executadas de forma confiável
+Atomicidade,Consistência,Isolamento,Durabilidade EM BANCOS RELACIONAIS
+
+Iniciando projeto com SPRING:
+Criar um projeto com Maven
+Editar pom.xml e adicionar  parent do Spring Boot, Dependência principal do Spring Boot, Web (para REST APIs) e  Testes
+Também adicionar a dependência do banco de dados
+Criar estrutura src/main/java e pacote com a Classe Main do seu projeto
+Colocar @SpringBootApplication acima do nome da classe e  SpringApplication.run(DddWorkshopMongoApplication.class, args);
+Rodar a classe e abrir localhost:8080 do tomcat.

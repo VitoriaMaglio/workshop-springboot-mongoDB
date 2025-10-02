@@ -1,0 +1,11 @@
+package com.estudando.dddworkshopmongo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class DddWorkshopMongoApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(DddWorkshopMongoApplication.class, args);
+    }
+}
