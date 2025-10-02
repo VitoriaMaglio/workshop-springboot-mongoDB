@@ -56,6 +56,11 @@ Em service injeção de dependência da camada de acesso ao banco
 Entidade declarar @Document(collection = "user") E @Id
 Resource injeção de dependêcia da camada serviço e refatorar método para acessar por essa dependência o retorno de todos objetos do banco
 
+Pacote config com classe Instantiation para instanciar objetos e salvar no banco
+
+DTO (Data Transfer Object): é um objeto que tem o papel de carregar dados das entidades de forma simples,
+podendo inclusive "projetar" apenas alguns dados da entidade original.
+
 
 
 

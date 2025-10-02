@@ -1,6 +1,7 @@
 package com.estudando.dddworkshopmongo.resources;
 
 import com.estudando.dddworkshopmongo.domain.User;
+import com.estudando.dddworkshopmongo.dto.UserDTO;
 import com.estudando.dddworkshopmongo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController //declarando que esse classe é um recurso REST
 @RequestMapping(value="/users") //declarando cfaminho do endpoint
@@ -25,12 +27,15 @@ public class UserResource {
     //Método que retorna uma lista de usuários
     //Método de tipo ResponseEntity, classe que representa todo resposta HTTP
     @RequestMapping(method= RequestMethod.GET) //determinado um endpoint
-    public ResponseEntity<List<User>> findAll() {
+    public ResponseEntity<List<UserDTO>> findAll() {
 
         //criando uma List(interface,não é instanciada) e instanciando implementação ArrayList
-        List<User> list = service.findAll(); //buscando no banco os objetos
-
-        return ResponseEntity.ok().body(list);//retornando resp HTTP
+        List<User> list = service.findAll(); //buscando no banco os objetos User
+        //convertendo os users objetos para usersDTO
+        //lista recebe a conversão desses objs.
+        //lista é transformada em stream(coleção compatível com lambda), map(pega cada objeto), e para cada obj user retorna um userDTO e transforma stream em lista
+        List<UserDTO> listDto = list.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(listDto);
     }
 
     //Tipo RequestEntity, classe que representa as requisições HTTP
