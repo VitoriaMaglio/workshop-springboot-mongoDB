@@ -21,10 +21,17 @@ família de colunas
 
 Agregado é um conjunto de dados relacionados tratados como uma unidade
 Bloco contíguo, acessa os dados de uma entidade com um só acesso
-Dados não normalizado->
+Normalização (em bancos relacionais):
+
+Separar dados em várias tabelas para evitar duplicação e garantir integridade.
+Dados não precisam seguir o modelo normalizado->guardar todos os dados juntos em um único documento ou coleção,
 Já possui a estrutura de objetos associados, todos dados são armazenados juntos, uma unidade natural de replicação e estão no mesmo node do cluster
 ACID:conjunto de propriedades que garantem que as transações sejam executadas de forma confiável
 Atomicidade,Consistência,Isolamento,Durabilidade EM BANCOS RELACIONAIS
+
+
+Banco relacional: tabelas se relacionam com fk
+Não relacional: tem um agregado com vários objetos; pode ter listas
 
 Iniciando projeto com SPRING:
 Criar um projeto com Maven
@@ -45,23 +52,23 @@ Checklist para criar entidades:
  hashCode e equals (implementação padrão: somente id)
  Serializable (padrão: 1L)
 
-Criar EntidadeResouce, classe responsável pelas requisições HTTP dessa entidade
+Criar EntidadeResouce, classe responsável pelas requisições HTTP dessa entidade
 
-Conectar com banco-> dependências
+Conectar com banco-> dependências
 Pois ao invés de instanciar objetos você pega eles do banco.
 
-Criar pacotes de services e repository e file application.properties para conectar com a host do Mongodb
-Em repository interface irá acessar banco de dados
-Em service injeção de dependência da camada de acesso ao banco
-Entidade declarar @Document(collection = "user") E @Id
-Resource injeção de dependêcia da camada serviço e refatorar método para acessar por essa dependência o retorno de todos objetos do banco
+Criar pacotes de services e repository e file application.properties para conectar com a host do Mongodb
+Em repository interface irá acessar banco de dados
+Em service injeção de dependência da camada de acesso ao banco
+Entidade declarar @Document(collection = "user") E @Id
+Resource injeção de dependêcia da camada serviço e refatorar método para acessar por essa dependência o retorno de todos objetos do banco
 
-Pacote config com classe Instantiation para instanciar objetos e salvar no banco
+ config com classe Instantiation para instanciar objetos e salvar no banco
 
-DTO (Data Transfer Object): é um objeto que tem o papel de carregar dados das entidades de forma simples,
+DTO (Data Transfer Object): é um objeto que tem o papel de carregar dados das entidades de forma simples,
 podendo inclusive "projetar" apenas alguns dados da entidade original.
 
-
+Insere,deleta e atualiza com métodos HTTP ; User e UserDTO
 
 
 

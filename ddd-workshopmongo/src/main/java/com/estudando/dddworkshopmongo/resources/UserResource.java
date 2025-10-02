@@ -71,8 +71,6 @@ public class UserResource {
         return ResponseEntity.noContent().build();
     }
 
-
-
     //Tipo RequestEntity, classe que representa as requisições HTTP
 
 
