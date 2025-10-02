@@ -33,3 +33,21 @@ Também adicionar a dependência do banco de dados
 Criar estrutura src/main/java e pacote com a Classe Main do seu projeto
 Colocar @SpringBootApplication acima do nome da classe e  SpringApplication.run(DddWorkshopMongoApplication.class, args);
 Rodar a classe e abrir localhost:8080 do tomcat.
+Dar start no cmd no Mongodb
+Criar uma base de dados e uma coleção
+
+Iniciar criação de pacotes e classes
+Checklist para criar entidades:
+ Atributos básicos
+ Associações (inicie as coleções)
+ Construtores (não inclua coleções no construtor com parâmetros)
+ Getters e setters
+ hashCode e equals (implementação padrão: somente id)
+ Serializable (padrão: 1L)
+
+
+Objetivo de projeto:
+Sistema que representa usuários, que realizam posts como "fazer um post na internet" e cada post tem comentários
+User pode ter vários posts
+Post tem um autor, e pode ter vários comentários
+Comment tem um autor e um post
