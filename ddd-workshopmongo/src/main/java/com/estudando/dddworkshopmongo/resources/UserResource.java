@@ -55,6 +55,13 @@ public class UserResource {
         return ResponseEntity.created(uri).build();
     }
 
+    //Método que deleta usuário
+    @RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+    public ResponseEntity<Void> delete(@PathVariable String id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();//código 204
+    }
+
 
 
     //Tipo RequestEntity, classe que representa as requisições HTTP
