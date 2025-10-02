@@ -36,6 +36,8 @@ Um sistema simples feito para estudo do framework **Spring Boot** e integração
 
 - Comentários no código que explicam em detalhes comandos e anotações de Spring para estudo.
 
+- Arquivo "Conceitos" explicando conceitos teóricos e lógica para construção do projeto.
+
  # Endpoints Principais
  
 ### Usuários
