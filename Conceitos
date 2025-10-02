@@ -50,6 +50,15 @@ Criar EntidadeResouce, classe responsável pelas requisições HTTP dessa entida
 Conectar com banco-> dependências
 Pois ao invés de instanciar objetos você pega eles do banco.
 
+Criar pacotes de services e repository e file application.properties para conectar com a host do Mongodb
+Em repository interface irá acessar banco de dados
+Em service injeção de dependência da camada de acesso ao banco
+Entidade declarar @Document(collection = "user") E @Id
+Resource injeção de dependêcia da camada serviço e refatorar método para acessar por essa dependência o retorno de todos objetos do banco
+
+
+
+
 
 Objetivo de projeto:
 Sistema que representa usuários, que realizam posts como "fazer um post na internet" e cada post tem comentários
