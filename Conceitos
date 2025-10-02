@@ -1,41 +1,76 @@
-Iniciando projeto com Spring e MongoDB, um banco de dados não relacional
-Coleções-> em banco não relacional nõa criamos tabelas pois não possuem sequel, são orientados à documentos.
+MongoDB é um banco de dados não relacional.
+Em bancos de dados não relacionais, não criamos tabelas, pois não possuem sequência (sequel). Em vez disso, criamos coleções, que são orientadas a documentos.
 
-Nivelamento sobre NoSQL e MongoDB
-Probelmas q bancos não relacionais resolveram:
-Incompatibilidade de impedância: em modelos relacionais cada entidade é representada por uma tabela, dados são armazenados em tabelas diferentes
-Para montar relatórios é necessário buscar em várias tabelas, e são armazenadas de uma forma diferente daqueles dados em memória do computador,
-que são armazenados em objetos relacionados na memória RAM.
-Porém no disco, esses dados são armazenados em memórias e linhas, e precisam ficar traduzindo objetos relacionais para objetos armazenados em memória
-ORM = Mapeameto de objt relacionais para facilitar para programadores; problemas de performance
-Transações e junções em bancos relacionais degradam performance.
-Grande volume de dados e acessos: suporte à grande volume de acessos e dados, relacionais não funcionam bem em cluster
+° Nivelamento sobre NoSQL e MongoDB:
+Banco de dados não relacionais solucionam dois principais problemas dos bancos relacionais:
 
-Duas classes principais de banco de dados:
-.Banco de dadoxs orientado a agregados->
-chave-valor
-documentos
-família de colunas
-.Banco de dados de grafos
+°Incompatibilidade de impedância:
+Em modelos relacionais, cada entidade é representada por uma tabela.
 
+Os dados são armazenados em tabelas diferentes e, para montar relatórios, é necessário realizar diversas junções.
 
-Agregado é um conjunto de dados relacionados tratados como uma unidade
-Bloco contíguo, acessa os dados de uma entidade com um só acesso
-Normalização (em bancos relacionais):
+Esses dados são armazenados de forma diferente da memória do computador, que utiliza objetos relacionados na RAM.
 
-Separar dados em várias tabelas para evitar duplicação e garantir integridade.
-Dados não precisam seguir o modelo normalizado->guardar todos os dados juntos em um único documento ou coleção,
-Já possui a estrutura de objetos associados, todos dados são armazenados juntos, uma unidade natural de replicação e estão no mesmo node do cluster
-ACID:conjunto de propriedades que garantem que as transações sejam executadas de forma confiável
-Atomicidade,Consistência,Isolamento,Durabilidade EM BANCOS RELACIONAIS
+No disco, os dados são armazenados em linhas e colunas, o que exige constante tradução de objetos relacionais para objetos de memória.
 
+ORM (Object-Relational Mapping) surgiu para mapear objetos relacionais e facilitar a vida dos programadores, mas pode causar problemas de performance.
+°Transações e junções:
+Em bancos relacionais, transações e junções degradam a performance.
+
+Grandes volumes de dados e acessos não escalam bem em ambientes distribuídos (clusters).
+
+°Existem duas classes principais de banco de dados:
+-Banco de dados orientado a agregados->chave-valor, documentos,família de colunas
+-Banco de dados de grafos
+
+Vamos utilizar banco de dados orientado a agregados:
+Conceitos->
+
+°Agregado é um conjunto de dados relacionados tratados como uma unidade
+°Bloco contíguo, acessa os dados de uma entidade com um só acesso
+
+°Normalização(em bancos relacionais)->Separar dados em várias tabelas para evitar duplicação e garantir integridade.
+°Não normalização->Dados não precisam seguir o modelo normalizado->guardar todos os dados juntos em um único documento ou coleção,
+já possui a estrutura de objetos associados, todos dados são armazenados juntos, uma unidade natural de replicação e estão no mesmo node do cluster
+
+Nos bancos não relacionais, o modelo é mais flexível, e muitas vezes abre mão de ACID completo para obter performance e escalabilidade.
+(bancos relacionais:
+ACID é um conjunto de propriedades que garantem que as transações sejam executadas de forma confiável:
+Atomicidade
+Consistência
+Isolamento
+Durabilidade)
 
 Banco relacional: tabelas se relacionam com fk
 Não relacional: tem um agregado com vários objetos; pode ter listas
 
-Iniciando projeto com SPRING:
-Criar um projeto com Maven
-Editar pom.xml e adicionar  parent do Spring Boot, Dependência principal do Spring Boot, Web (para REST APIs) e  Testes
+°Iniciando projeto com SPRING:
+
+Objetivo de projeto:
+Sistema que representa:
+
+Usuários (User) → podem realizar vários posts.
+
+Posts (Post) → têm um autor e podem ter vários comentários.
+
+Comentários (Comment) → possuem um autor e pertencem a um post.
+
+°Estrutura de camadas
+
+ Controller (REST) → expõe os endpoints da API.
+
+ Service → contém a lógica de negócio.
+
+ Repository → faz o acesso ao banco de dados.
+
+ Domain (Model) → representa as entidades.
+
+ Fluxo:
+ Front-end → Controllers → Services → Repository → Domain → Banco de dados
+
+
+Criar um projeto com Maven->
+Editar pom.xml e adicionar parent do Spring Boot, Dependência principal do Spring Boot, Web (para REST APIs) e  Testes
 Também adicionar a dependência do banco de dados
 Criar estrutura src/main/java e pacote com a Classe Main do seu projeto
 Colocar @SpringBootApplication acima do nome da classe e  SpringApplication.run(DddWorkshopMongoApplication.class, args);
@@ -44,6 +79,7 @@ Dar start no cmd no Mongodb
 Criar uma base de dados e uma coleção
 
 Iniciar criação de pacotes e classes
+
 Checklist para criar entidades:
  Atributos básicos
  Associações (inicie as coleções)
@@ -52,7 +88,7 @@ Checklist para criar entidades:
  hashCode e equals (implementação padrão: somente id)
  Serializable (padrão: 1L)
 
-Criar EntidadeResouce, classe responsável pelas requisições HTTP dessa entidade
+Criar Entidade Resource, classe responsável pelas requisições HTTP dessa entidade
 
 Conectar com banco-> dependências
 Pois ao invés de instanciar objetos você pega eles do banco.
@@ -61,14 +97,14 @@ Pois ao invés de instanciar objetos você pega eles do banco.
 Em repository interface irá acessar banco de dados
 Em service injeção de dependência da camada de acesso ao banco
 Entidade declarar @Document(collection = "user") E @Id
-Resource injeção de dependêcia da camada serviço e refatorar método para acessar por essa dependência o retorno de todos objetos do banco
+Resource injeção de dependência da camada serviço e refatorar método para acessar por essa dependência o retorno de todos objetos do banco
 
  config com classe Instantiation para instanciar objetos e salvar no banco
 
 DTO (Data Transfer Object): é um objeto que tem o papel de carregar dados das entidades de forma simples,
 podendo inclusive "projetar" apenas alguns dados da entidade original.
 
-Insere,deleta e atualiza com métodos HTTP ; User e UserDTO
+Insere,apaga e atualiza com métodos HTTP ; User e UserDTO
 
 Cria a entidade Post com mesma lógica
 Faz referência para AuthorDTO
@@ -78,14 +114,3 @@ Acrescentando comentários aos posts
 Consulta simples com query methods
 escrever findbyAtributo... e a consulta no banco é feito automático
 
-
-Objetivo de projeto:
-Sistema que representa usuários, que realizam posts como "fazer um post na internet" e cada post tem comentários
-User pode ter vários posts
-Post tem um autor, e pode ter vários comentários
-Comment tem um autor e um post
-
-Back-end expôem os controladoresREST para o front
-controladoresREST acessam services
-services acessam repository(camada de acesso ao banco de dados)
-repository acessa domínio
