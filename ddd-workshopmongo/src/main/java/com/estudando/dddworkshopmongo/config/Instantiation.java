@@ -2,6 +2,7 @@ package com.estudando.dddworkshopmongo.config;
 
 import com.estudando.dddworkshopmongo.domain.Post;
 import com.estudando.dddworkshopmongo.domain.User;
+import com.estudando.dddworkshopmongo.dto.AuthorDTO;
 import com.estudando.dddworkshopmongo.repository.PostRepository;
 import com.estudando.dddworkshopmongo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,9 +37,10 @@ public class Instantiation implements CommandLineRunner {
         User maria = new User(null, "Maria Brown", "maria@gmail.com");
         User alex = new User(null, "Alex Green", "alex@gmail.com");
         User bob = new User(null, "Bob Grey", "bob@gmail.com");
-
-        Post post1 = new Post(null,  LocalDate.parse("21/09/2018", fmt), "Partiu!", "Viajar!", maria);
         userRepository.saveAll(Arrays.asList(maria, alex, bob));
+        //primeiro salvar os usuários persistindo dados para que eles tenham id próprio e depois fazer a cópia para dto
+
+        Post post1 = new Post(null,  LocalDate.parse("21/09/2018", fmt), "Partiu!", "Viajar!", new AuthorDTO(maria));
         postRepository.saveAll(Arrays.asList(post1));
     }
 }
