@@ -45,9 +45,19 @@ Checklist para criar entidades:
  hashCode e equals (implementação padrão: somente id)
  Serializable (padrão: 1L)
 
+Criar EntidadeResouce, classe responsável pelas requisições HTTP dessa entidade
+
+Conectar com banco-> dependências
+Pois ao invés de instanciar objetos você pega eles do banco.
+
 
 Objetivo de projeto:
 Sistema que representa usuários, que realizam posts como "fazer um post na internet" e cada post tem comentários
 User pode ter vários posts
 Post tem um autor, e pode ter vários comentários
 Comment tem um autor e um post
+
+Back-end expôem os controladoresREST para o front
+controladoresREST acessam services
+services acessam repository(camada de acesso ao banco de dados)
+repository acessa domínio
