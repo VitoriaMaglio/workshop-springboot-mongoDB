@@ -103,6 +103,9 @@ Pois ao invés de instanciar objetos você pega eles do banco.
 
 DTO (Data Transfer Object): é um objeto que tem o papel de carregar dados das entidades de forma simples,
 podendo inclusive "projetar" apenas alguns dados da entidade original.
+-Definir quais características de uma entidade você quer trafegar
+-Melhora segurança entre camadas
+-São classes simples que possuem alguns atributos e getters e setters
 
 Insere,apaga e atualiza com métodos HTTP ; User e UserDTO
 
