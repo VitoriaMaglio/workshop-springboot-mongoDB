@@ -85,8 +85,9 @@ Checklist para criar entidades:
  Associações (inicie as coleções)
  Construtores (não inclua coleções no construtor com parâmetros)
  Getters e setters
- hashCode e equals (implementação padrão: somente id)
- Serializable (padrão: 1L)
+ hashCode e equals (implementação padrão: somente id) -> esses dois métodos vêm da classe Object. Equals define quando dois objetos são considerados iguais por atributos e não por endereços de memória, e HashCode retorna um número inteiro usado em coleções como HashSet, HashMap.
+ Serializable (padrão: 1L) -> é uma interface marker do Java (não tem métodos), ela serve para dizer à JVM que um objeto pode ser transformado em sequência de bytes (serializado). Sendo útil para salvar objetos em arquivos, enviar objetos pela rede e trabalhar com frameworks.
+
 
 Criar Entidade Resource, classe responsável pelas requisições HTTP dessa entidade
 
